@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons+Outlined");
+* {
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  color: #2a363b;
+}
+body {
+  background-color: #2a363b;
+  min-height: 100dvh;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+}
+.container {
+  position: relative;
+  background-color: #99b898;
+  width: 400px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.top-btn {
+  position: absolute;
+  top: 1rem;
+  border: none;
+  background-color: transparent;
+  font-size: 3rem;
+  color: #2a363b80;
+}
+.show-qrcode {
+  right: 1rem;
+}
+.show-menu {
+  left: 1rem;
+}
+.heading {
+  font-size: 2rem;
+  text-align: center;
+  line-height: 1.5;
+}
+.description {
+  text-align: center;
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
