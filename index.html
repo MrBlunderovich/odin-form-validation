@@ -10,18 +10,56 @@
   </head>
   <body>
     <div class="container">
-      <button class="top-btn show-qrcode material-icons-outlined">
+      <!-- <button class="top-btn show-qrcode material-icons-outlined">
         qr_code_2
-      </button>
-      <button class="top-btn show-menu material-icons-outlined">
-        menu_open
+      </button> -->
+      <button class="top-btn fill-form material-icons-outlined">
+        checklist_rtl
       </button>
       <h2 class="heading">Checkout</h2>
       <p class="description">
         This webpage is an excercise in JavaScript form validation. Do not enter
         real data in the fields.
       </p>
-      <form action="#" method="post" class="form"></form>
+      <form action="#" method="post" class="form">
+        <li class="form-field">
+          <label for="name">Name:</label>
+          <input type="text" id="name" />
+        </li>
+        <li class="form-field">
+          <label for="email">Email:</label>
+          <input type="email" id="email" />
+        </li>
+        <li class="form-field">
+          <label for="address">Address:</label>
+          <input type="text" id="address" />
+        </li>
+        <li class="form-field">
+          <label for="phone">Phone:</label>
+          <input type="tel" id="phone" />
+        </li>
+        <li class="form-field">
+          <label for="password">Password:</label>
+          <input type="password" id="password" />
+        </li>
+        <li class="form-field">
+          <label for="password2">Repeat password:</label>
+          <input type="password" id="password2" />
+        </li>
+        <!-- <li class="form-field">
+          <label for="card">Card number:</label>
+          <input inputmode="numeric" type="text" id="card" />
+        </li>
+        <li class="form-field">
+          <label for="expire">Expire date:</label>
+          <input inputmode="numeric" type="text" id="expire" />
+        </li>
+        <li class="form-field">
+          <label for="cvc">CVC:</label>
+          <input inputmode="numeric" type="text" id="cvc" />
+        </li> -->
+        <button type="submit">Submit</button>
+      </form>
     </div>
   </body>
 </html>

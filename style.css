@@ -35,7 +35,7 @@ body {
 .show-qrcode {
   right: 1rem;
 }
-.show-menu {
+.fill-form {
   left: 1rem;
 }
 .heading {
@@ -47,4 +47,17 @@ body {
   text-align: center;
   font-size: 0.8rem;
   line-height: 1.3;
+}
+form {
+  margin: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.form-field {
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
 }
