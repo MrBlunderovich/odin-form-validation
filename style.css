@@ -38,6 +38,16 @@ body {
 .fill-form {
   left: 1rem;
 }
+.fill-form:hover::after {
+  position: absolute;
+  left: 100%;
+  content: "Click fills, Ctrl+click saves, \A Shift+click clears session storage, \A Ctrl+shift+click clears form.";
+  white-space: pre;
+  background-color: #fff;
+  font-size: 0.8rem;
+  font-family: "Roboto", sans-serif;
+  padding: 0.5em 1em;
+}
 .heading {
   font-size: 2rem;
   text-align: center;
