@@ -2,6 +2,8 @@
 const form = document.querySelector("form");
 const formFields = document.querySelectorAll("form input");
 
+const reservedEmails = ["aaa@bbb", "ccc@ddd", "eee@fff"];
+
 window.onload = () => {
   //const qrButton = document.querySelector(".show-qrcode");
   const fillButton = document.querySelector(".fill-form");
@@ -27,9 +29,10 @@ function fillForm(event) {
     saveToStorage();
   } else if (event.shiftKey) {
     console.log("clearing localStorage fields");
-    const formData = localStorage.getItem("formData");
-    localStorage.clear();
-    localStorage.setItem("formData", formData);
+    formFields.forEach((field) => {
+      const key = field.id;
+      localStorage.removeItem(key);
+    });
   } else {
     console.log("filling form from localStorage");
     loadFromStorage();

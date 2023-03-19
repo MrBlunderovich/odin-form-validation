@@ -19,6 +19,7 @@ body {
 .container {
   position: relative;
   background-color: #99b898;
+  background-color: #fffefe;
   width: 400px;
   padding: 2rem;
   display: flex;
@@ -43,7 +44,7 @@ body {
   left: 100%;
   content: "Click fills, Ctrl+click saves, \A Shift+click clears session storage, \A Ctrl+shift+click clears form.";
   white-space: pre;
-  background-color: #fff;
+  background-color: #efefef;
   font-size: 0.8rem;
   font-family: "Roboto", sans-serif;
   padding: 0.5em 1em;
@@ -70,4 +71,9 @@ form {
   justify-content: flex-end;
   align-items: center;
   gap: 1rem;
+}
+input {
+  border: 1px solid #2a363b;
+  border-radius: 3px;
+  padding: 0.1rem 0.3rem;
 }
