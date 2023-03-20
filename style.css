@@ -63,17 +63,44 @@ form {
   margin: 2rem 1rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 }
 .form-field {
   list-style-type: none;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 0.3rem 1rem;
+}
+label {
+  text-align: right;
+  grid-row: 2;
 }
 input {
+  align-self: center;
+  grid-row: 2;
   border: 1px solid #2a363b;
   border-radius: 3px;
   padding: 0.1rem 0.3rem;
+}
+.hint {
+  grid-row: 1;
+  grid-column: 1/-1;
+  visibility: hidden;
+  width: 100%;
+  text-align: right;
+  font-size: 0.8rem;
+}
+.invalid {
+  background-color: rgb(255, 193, 106);
+}
+input:focus,
+.pending {
+  background-color: #ffe26e;
+}
+input:focus ~ .hint {
+  visibility: visible;
+}
+.valid {
+  background-color: rgb(150, 255, 154);
 }
