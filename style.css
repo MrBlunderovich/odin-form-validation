@@ -63,7 +63,7 @@ form {
   margin: 2rem 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 .form-field {
   list-style-type: none;
@@ -75,6 +75,8 @@ form {
 label {
   text-align: right;
   grid-row: 2;
+
+  align-self: center;
 }
 input {
   align-self: center;
@@ -82,6 +84,8 @@ input {
   border: 1px solid #2a363b;
   border-radius: 3px;
   padding: 0.1rem 0.3rem;
+  background-color: transparent;
+  transition: background-color 300ms;
 }
 .hint {
   grid-row: 1;
@@ -92,15 +96,39 @@ input {
   font-size: 0.8rem;
 }
 .invalid {
-  background-color: rgb(255, 193, 106);
+  background-color: #ffc16a;
 }
-input:focus,
-.pending {
-  background-color: #ffe26e;
-}
+/* input:focus {
+  background-color: #ffe990;
+} */
 input:focus ~ .hint {
   visibility: visible;
 }
-.valid {
-  background-color: rgb(150, 255, 154);
+input:valid {
+  /* background-color: #e3ffbb; */
+  border-color: #66af00;
+  outline-color: #66af00;
+}
+input:invalid:not(:placeholder-shown) {
+  /* background-color: #fcc8a5; */
+  border-color: #a70000;
+  outline-color: #a70000;
+}
+input:invalid:focus {
+  /* background-color: #fcc8a5; */
+  border-color: #ddb400;
+  outline-color: #ddb400;
+}
+button[type="submit"] {
+  margin-top: 1rem;
+  border-radius: 3px;
+  border: 1px solid #2a363b;
+  padding: 0.2rem;
+}
+button.ready-to-submit {
+  border-color: #66af00;
+  outline-color: #66af00;
+}
+button:active {
+  transform: scale(0.98);
 }

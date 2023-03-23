@@ -13,7 +13,7 @@
       <!-- <button class="top-btn show-qrcode material-icons-outlined">
         qr_code_2
       </button> -->
-      <button class="top-btn fill-form material-icons-outlined">
+      <button class="top-btn fill-form material-icons-outlined" tabindex="-1">
         checklist_rtl
       </button>
       <h2 class="heading">Checkout</h2>
@@ -21,7 +21,13 @@
         This webpage is an excercise in JavaScript form validation. Do not enter
         real data in the fields.
       </p>
-      <form action="#" method="post" class="form">
+      <form
+        action="#"
+        method="post"
+        class="form"
+        spellcheck="false"
+        autocomplete="off"
+      >
         <li class="form-field">
           <label for="name">Name:</label>
           <input
@@ -42,6 +48,7 @@
             placeholder="required"
             maxlength="70"
           />
+          <span class="hint">email@example.com</span>
         </li>
         <li class="form-field">
           <label for="address">Address:</label>
@@ -52,6 +59,7 @@
             placeholder="required"
             maxlength="200"
           />
+          <span class="hint">City, street, building, appartment.</span>
         </li>
         <li class="form-field">
           <label for="phone">Phone:</label>
@@ -63,28 +71,37 @@
             maxlength="20"
             minlength="4"
           />
+          <span class="hint">Example: 8(123)456-78-90</span>
         </li>
         <li class="form-field">
           <label for="password">Password:</label>
           <input
-            type="password"
+            type="text"
             id="password"
             required
             placeholder="required"
             maxlength="30"
             minlength="8"
           />
+          <span class="hint"
+            >8-30 characters, upper and lower case with digits.</span
+          >
         </li>
         <li class="form-field">
+          <label for="hide-password">Hide password and enter it twice:</label>
+          <input type="checkbox" id="hide-password" />
+          <span class="hint"><br /></span>
+        </li>
+        <li class="form-field" style="visibility: hidden">
           <label for="password2">Repeat password:</label>
           <input
             type="password"
             id="password2"
-            required
             placeholder="required"
             maxlength="30"
             minlength="8"
           />
+          <span class="hint">Once again please.</span>
         </li>
         <!-- <li class="form-field">
           <label for="card">Card number:</label>
