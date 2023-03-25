@@ -3,34 +3,35 @@ const form = document.querySelector("form");
 const formFields = document.querySelectorAll("form input");
 const submitButton = document.querySelector('button[type="submit"]');
 
-formFields.forEach((field) => {
-  field.addEventListener("change", (event) => {
-    const field = event.target;
-    validateInput(field);
-  });
-
-  field.addEventListener("focus", reportInput);
-});
-
 const reservedEmails = ["aaa@bbb", "ccc@ddd", "eee@fff"];
 
 window.onload = () => {
-  //const qrButton = document.querySelector(".show-qrcode");
+  //autofill button
   const fillButton = document.querySelector(".fill-form");
-  //qrButton.addEventListener("click", showQRCode);
   fillButton.addEventListener("click", fillForm);
-  form.addEventListener("input", saveInput);
+
+  //autosave mechanism
   restoreForm();
+
   form.addEventListener("input", (event) => {
     const field = event.target;
     validateInput(field);
+    autoSaveInput(event);
   });
+
+  form.addEventListener("submit", (event) => {
+    if (form.checkValidity()) {
+      event.preventDefault();
+      alert("Success!!");
+    }
+  });
+
+  formFields.forEach((field) => {
+    field.addEventListener("focus", reportInput);
+  });
+
   validateForm();
 };
-
-/* function showQRCode() {
-  console.log("that would need Webpack");
-} */
 
 function fillForm(event) {
   console.log(event);
@@ -70,17 +71,29 @@ function loadFromStorage() {
   formFields.forEach((field) => {
     const key = field.id;
     field.value = data[key];
+    /* if (field.type === "checkbox") {
+      // field.checked =
+    } */
   });
 }
 
-function saveInput(event) {
-  localStorage.setItem(event.target.id, event.target.value);
+function autoSaveInput(event) {
+  const value =
+    event.target.type === "checkbox"
+      ? event.target.checked
+      : event.target.value;
+  localStorage.setItem(event.target.id, value);
 }
 
 function restoreForm() {
   formFields.forEach((field) => {
     const key = field.id;
-    field.value = localStorage.getItem(key);
+    const isCheckbox = field.type === "checkbox";
+    if (isCheckbox) {
+      field.checked = JSON.parse(localStorage.getItem(key));
+    } else {
+      field.value = localStorage.getItem(key);
+    }
   });
   //form.reportValidity();
 }
@@ -90,8 +103,8 @@ function validateInput(field) {
   const inputField = field;
   const inputId = field.id;
   //const fieldIsValid = inputField.validity.valid;
-  console.log({ inputField });
-  console.log({ inputId });
+  //console.log({ inputField });
+  //console.log({ inputId });
   inputField.setCustomValidity("");
 
   switch (inputId) {
@@ -168,13 +181,14 @@ function validateInput(field) {
 
     case "password2":
       const password1 = document.querySelector("#password");
-      if (inputField.value !== password1.value) {
+      if (inputField.value !== password1.value && inputField.required) {
         inputField.setCustomValidity("Passwords do not match.");
         inputField.reportValidity();
       }
       console.log("validating password");
       console.log(inputField.validity.valid);
       break;
+
     case "hide-password":
       const password1Input = document.querySelector("#password");
       const password2Input = document.querySelector("#password2");
@@ -183,20 +197,27 @@ function validateInput(field) {
         .closest("li.form-field");
       if (inputField.checked) {
         password1Input.type = "password";
-        password2Block.style = "visibility:visible";
+        password2Block.style = "display: grid";
         password2Input.required = true;
+        validateInput(password2Input);
       } else {
         password1Input.type = "text";
-        password2Block.style = "visibility:hidden";
+        password2Block.style = "display: none";
         password2Input.required = false;
+        password2Input.value = "";
+        password2Input.setCustomValidity("");
       }
-      console.log("hiding password");
+      console.log("hiding or showing password");
       break;
 
     default:
       break;
   }
-  if (form.reportValidity()) {
+  submitButtonIndication();
+}
+
+function submitButtonIndication() {
+  if (form.checkValidity()) {
     submitButton.classList.add("ready-to-submit");
   } else {
     submitButton.classList.remove("ready-to-submit");
@@ -218,8 +239,3 @@ function reportInput(event) {
     field.reportValidity();
   }
 }
-
-/* function hidePassword() {
-  console.log(passwordHider);
-  console.log(passwordHider.checked);
-} */
